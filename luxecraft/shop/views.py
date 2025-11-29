@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
 from django.contrib import messages
 from .models import Product, Cart
 
 
 def home(request):
     return render(request, 'shop/home.html')
-
 
 
 def products(request):
@@ -76,7 +75,7 @@ def signup(request):
         password_confirm = request.POST.get('password_confirm')
         email = request.POST.get('email')
 
-        # Validation
+
         if not username or not password or not password_confirm:
             messages.error(request, 'All fields are required.')
             return redirect('signup')
