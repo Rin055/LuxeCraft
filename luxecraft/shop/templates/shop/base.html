@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}LuxeCraft{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'shop/css/styles.css' %}">
+</head>
+<body>
+
+ {% load static %}
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="{% url 'home' %}">
+      <img src="{% static 'shop/images/logo.png' %}" alt="LuxeCraft Logo" class="logo">
+    </a>
+    <nav class="main-nav">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'products' %}">Products</a>
+      <a href="{% url 'cart' %}">Cart</a>
+
+      {% if user.is_authenticated %}
+        <span class="user-pill">Hello, {{ user.username }}</span>
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="logout-btn">Logout</button>
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}" class="login-link">Sign In</a>
+        <a href="{% url 'signup' %}" class="signup-link">Sign Up</a>
+      {% endif %}
+    </nav>
+  </div>
+</header>
+
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© {{ now|date:"Y" }} LuxeCraft — Handmade crafts for your unique style.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'shop/base.html' %}
+{% block title %}Home — LuxeCraft{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">Discover Handmade Elegance</h1>
+    <p class="hero-sub">Unique handcrafted items created with love and care</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{% url 'products' %}">Browse Crafts</a>
+      <a class="btn btn-ghost" href="{% url 'cart' %}">View Cart</a>
+    </div>
+  </div>
+  <div class="hero-image" aria-hidden="true"></div>
+</section>
+
+<section class="intro">
+  <h2>About LuxeCraft</h2>
+  <p>At LuxeCraft, we celebrate creativity and craftsmanship. Every piece in our store is handmade, unique, and designed to add a personal touch to your life. Explore our collection and support talented artisans.</p>
+</section>
+{% endblock %}

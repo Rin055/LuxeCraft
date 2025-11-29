@@ -1,0 +1,55 @@
+{% extends 'shop/base.html' %}
+{% block title %}Sign Up — LuxeCraft{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>Create Account</h1>
+</section>
+
+<section class="container">
+  {% if messages %}
+    <div style="margin-bottom: 20px;">
+      {% for message in messages %}
+        {% if 'error' in message.tags %}
+          <div style="padding: 12px; margin-bottom: 10px; border-radius: 6px; background-color: #f8d7da; color: #721c24;">
+            {{ message }}
+          </div>
+        {% else %}
+          <div style="padding: 12px; margin-bottom: 10px; border-radius: 6px; background-color: #d4edda; color: #155724;">
+            {{ message }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <form method="post" style="max-width:400px; margin:auto;">
+    {% csrf_token %}
+    <div style="margin-bottom:12px;">
+      <label for="id_username">Username:</label>
+      <input type="text" name="username" id="id_username" required style="width:100%; padding:8px; border-radius:6px; border:1px solid #ccc; box-sizing: border-box;">
+    </div>
+
+    <div style="margin-bottom:12px;">
+      <label for="id_email">Email:</label>
+      <input type="email" name="email" id="id_email" style="width:100%; padding:8px; border-radius:6px; border:1px solid #ccc; box-sizing: border-box;">
+    </div>
+
+    <div style="margin-bottom:12px;">
+      <label for="id_password">Password:</label>
+      <input type="password" name="password" id="id_password" required style="width:100%; padding:8px; border-radius:6px; border:1px solid #ccc; box-sizing: border-box;">
+    </div>
+
+    <div style="margin-bottom:12px;">
+      <label for="id_password_confirm">Confirm Password:</label>
+      <input type="password" name="password_confirm" id="id_password_confirm" required style="width:100%; padding:8px; border-radius:6px; border:1px solid #ccc; box-sizing: border-box;">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+  </form>
+
+  <p style="text-align: center; margin-top: 20px;">
+    Already have an account? <a href="{% url 'login' %}">Sign In</a>
+  </p>
+</section>
+{% endblock %}

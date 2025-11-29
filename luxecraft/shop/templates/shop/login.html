@@ -1,0 +1,29 @@
+{% extends 'shop/base.html' %}
+{% block title %}Sign In — LuxeCraft{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>Sign In</h1>
+</section>
+
+<section class="container">
+  <form method="post" style="max-width:400px; margin:auto;">
+    {% csrf_token %}
+    <div style="margin-bottom:12px;">
+      <label for="id_username">Username:</label>
+      <input type="text" name="username" id="id_username" required style="width:100%; padding:8px; border-radius:6px; border:1px solid #ccc;">
+    </div>
+
+    <div style="margin-bottom:12px;">
+      <label for="id_password">Password:</label>
+      <input type="password" name="password" id="id_password" required style="width:100%; padding:8px; border-radius:6px; border:1px solid #ccc;">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign In</button>
+  </form>
+
+  <p style="text-align: center; margin-top: 20px;">
+    Don't have an account? <a href="{% url 'signup' %}">Sign Up</a>
+  </p>
+</section>
+{% endblock %}
